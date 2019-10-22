@@ -1,32 +1,73 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <nav-bar />
+    <div class="main-content">
+      <transition name="fade"
+                  mode="out-in">
+
+        <router-view />
+      </transition>
     </div>
-    <router-view/>
   </div>
 </template>
 
+<script>
+import NavBar from '@/components/nav-bar/nav-bar.component.vue';
+
+export default {
+  name: 'app',
+  components: {
+    NavBar,
+  },
+};
+</script>
+
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  max-width: 1200px;
+  padding: 2.5rem 5rem;
+  margin: 0 auto;
 
-#nav {
-  padding: 30px;
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  .main-content {
+    min-height: 60vh;
+    background-color: $white;
+    border-radius: 0.4rem;
+    text-align: center;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 20rem solid $blue;
+    border-right: 24rem solid transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-bottom: 20rem solid $red;
+    border-left: 24rem solid transparent;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
   }
 }
+
 </style>

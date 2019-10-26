@@ -37,10 +37,9 @@ export default {
   }
 
   .main-content {
-    min-height: 60vh;
+    min-height: 30vh;
     background-color: $white;
     border-radius: 0.4rem;
-    text-align: center;
   }
 
   &::before {
@@ -50,7 +49,7 @@ export default {
     height: 0;
     border-top: 20rem solid $blue;
     border-right: 24rem solid transparent;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: -1;
@@ -63,7 +62,7 @@ export default {
     height: 0;
     border-bottom: 20rem solid $red;
     border-left: 24rem solid transparent;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 0;
     z-index: -1;

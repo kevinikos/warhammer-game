@@ -59,6 +59,10 @@
 
           Create New Character
         </button>
+
+        <img class="character__mummy"
+             src="@/assets/icons/mummy/mummy.png"
+             alt="mummy">
       </li>
     </ul>
   </div>
@@ -229,11 +233,24 @@ export default {
     &:hover {
       background-color: #3D9970;
       color: $white;
+
+      ~ .character__mummy {
+        transform: rotate(-50deg);
+      }
     }
   }
 
   &__race-select {
     padding-left: 8rem;
+  }
+
+  &__mummy {
+    width: 20%;
+    position: absolute;
+    top: 40%;
+    right: -7rem;
+    transform-origin: bottom left;
+    transition: .6s ease-in-out;
   }
 }
 </style>

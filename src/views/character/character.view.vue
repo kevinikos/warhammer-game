@@ -26,6 +26,15 @@
         <img class="character__avatar"
              :src="character.avatar"
              alt="character">
+
+        <img class="character__grave"
+             src="@/assets/icons/tombstone/tombstone.svg"
+             alt="tombstone">
+
+        <span class="character__btn-delete"
+              @click="deleteCharacter(character.id)">
+          +
+        </span>
       </li>
 
       <li class="character__list-item character__list-item--creator">
@@ -105,6 +114,11 @@ export default {
           avatar,
         });
     },
+    deleteCharacter(id) {
+      db.collection('characters')
+        .doc(id)
+        .delete();
+    },
   },
 };
 </script>
@@ -133,7 +147,7 @@ export default {
     padding-right: 8rem;
 
     &--creator {
-      background-color: $green;
+
     }
 
     &:not(&--creator):hover {
@@ -173,6 +187,27 @@ export default {
     opacity: 0.6;
   }
 
+  &__grave {
+    width: 15%;
+    border-radius: 50% 50% 0 0;
+    position: absolute;
+    bottom: -0.5rem;
+    right: 2rem;
+  }
+
+  &__btn-delete {
+    font-size: 3.4rem;
+    transform: rotate(45deg);
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    transition: .4s;
+
+    &:hover {
+      color: $red
+    }
+  }
+
   &__name-input,
   &__btn-create,
   &__race-select {
@@ -183,6 +218,17 @@ export default {
 
     &:focus {
       outline: none;
+    }
+  }
+
+  &__btn-create {
+    background-color: $white;
+    transition: .4s;
+    cursor: cell;
+
+    &:hover {
+      background-color: #3D9970;
+      color: $white;
     }
   }
 

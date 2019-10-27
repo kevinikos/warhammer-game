@@ -27,7 +27,7 @@
          alt="tombstone">
 
     <span class="character-card__btn-delete"
-          @click="deleteCharacter(character.id)">
+          @click.prevent.stop="deleteCharacter(character.id)">
           +
         </span>
   </router-link>

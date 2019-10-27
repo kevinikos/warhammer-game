@@ -1,22 +1,22 @@
 <template>
-  <li class="character-card">
+  <router-link tag="li"
+               :to="{
+               name: 'character-details',
+               params: { id: character.id, character }}"
+               class="character-card">
+
     <div class="character-card__character-details">
       <div class="character-details__description">
-            <span class="character-details__name">
-              {{ character.name }}
-            </span>
+        <span class="character-details__name">
+          {{ character.name }}
+        </span>
 
         <span class="character-details__race">
-              {{ character.race }}
-            </span>
+          {{ character.race }}
+        </span>
       </div>
 
-      <ul class="character-details__statistics">
-        <li>ATC: 0</li>
-        <li>DEF: 10</li>
-        <li>MAG: 1</li>
-        <li>WIT: 5</li>
-      </ul>
+      <character-statistics :character="character" />
     </div>
     <img class="character-card__avatar"
          :src="character.avatar"
@@ -30,14 +30,17 @@
           @click="deleteCharacter(character.id)">
           +
         </span>
-  </li>
+  </router-link>
 </template>
 
 <script>
-import { db } from '@/main';
+import { db }              from '@/main';
+import CharacterStatistics from '@/views/character/components/character-statistics.component.vue';
 
 export default {
   name: 'character-card',
+  components:
+    { CharacterStatistics },
   props:
     { character: Object },
   methods: {
@@ -68,12 +71,6 @@ export default {
 
       &__race {
         font-size: 1.8rem;
-      }
-
-      &__statistics {
-        list-style: none;
-        font-size: 1.2rem;
-        margin-top: 0.4rem;
       }
     }
   }

@@ -15,13 +15,10 @@
 
         Character
       </router-link>
-      <router-link to="/character-details"
-                   tag="li"
-                   class="nav-bar__menu-item"
-                   active-class="nav-bar__menu-item--active">
+      <li class="nav-bar__menu-item">
 
-        Character Details
-      </router-link>
+        Something else
+      </li>
       <li class="nav-bar__menu-item">
 
         Roll a die

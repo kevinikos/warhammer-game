@@ -39,6 +39,10 @@ export default {
         {
           name: 'elf',
           avatar: 'https://vignette.wikia.nocookie.net/elderscrolls/images/8/87/WoodElf.png/revision/latest/scale-to-width-down/200?cb=20160915175759',
+          statistics:
+            {
+
+            },
         },
         {
           name: 'human',
